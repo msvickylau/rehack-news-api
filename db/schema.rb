@@ -12,12 +12,22 @@
 
 ActiveRecord::Schema.define(version: 2018_07_13_173724) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "saves", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "objectID"
+    t.integer "objectID"
     t.string "title"
     t.string "url"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
   end
 
 end
